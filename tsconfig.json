@@ -5,5 +5,8 @@
     "outDir": "build",
     "sourceMap": true,
     "types": ["node"]
-  }
+  },
+  "include": [
+    "src/*.ts"
+  ]
 }
