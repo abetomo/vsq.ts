@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,8 +22,11 @@
   "devDependencies": {
     "@types/jest": "^21.1.8",
     "@types/node": "^8.0.53",
+    "eslint-plugin-typescript": "^0.8.1",
     "jest": "^21.2.1",
-    "typescript": "^2.6.2"
+    "standard": "^10.0.3",
+    "typescript": "^2.6.2",
+    "typescript-eslint-parser": "^9.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -34,6 +39,12 @@
     },
     "testMatch": [
       "**/__tests__/*.(ts|tsx|js)"
+    ]
+  },
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [
+      "typescript"
     ]
   }
 }
