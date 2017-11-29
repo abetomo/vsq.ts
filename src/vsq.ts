@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-interface VsqData {
+export interface VsqData {
   name: string,
   value: string[]
 }
