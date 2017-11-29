@@ -12,7 +12,7 @@ export class VerySimpleQueueLikeSQS {
 
   _load (filePath: string) {
     if (fs.existsSync(filePath)) {
-      const vsqData: VsqDataLikeSQS = JSON.parse(fs.readFileSync(filePath))
+      const vsqData: VsqDataLikeSQS = JSON.parse(fs.readFileSync(filePath).toString())
       if (
         vsqData.name !== 'VerySimpleQueueLikeSQS' ||
         Object.prototype.toString.call(vsqData.value) !== '[object Object]'
