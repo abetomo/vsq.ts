@@ -3,7 +3,7 @@ import * as uuidv4 from 'uuid/v4'
 
 interface VsqDataLikeSQS {
   name: string,
-  value: object
+  value: {}
 }
 
 export class VerySimpleQueueLikeSQS {

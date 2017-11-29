@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 interface VsqData {
   name: string,
-  value: Array<string>
+  value: string[]
 }
 
 export class VerySimpleQueue {
