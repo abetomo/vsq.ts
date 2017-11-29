@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "lint": "standard",
-    "test": "npm run lint && npm run unit",
+    "test": "npm run lint && npm run test-typings && npm run unit",
+    "test-typings": "tsc --noEmit",
     "unit": "jest"
   },
   "repository": {
