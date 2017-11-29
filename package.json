@@ -47,5 +47,8 @@
     "plugins": [
       "typescript"
     ]
+  },
+  "dependencies": {
+    "commander": "^2.12.2"
   }
 }
