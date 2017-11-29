@@ -9,9 +9,6 @@ export class VerySimpleQueue {
   private data: VsqData
   private filePath: string
 
-  constructor () {
-  }
-
   _load (filePath: string) {
     if (fs.existsSync(filePath)) {
       const vsqData: VsqData = JSON.parse(fs.readFileSync(filePath).toString())
