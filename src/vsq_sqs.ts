@@ -10,7 +10,7 @@ export class VerySimpleQueueLikeSQS {
   private data: VsqDataLikeSQS
   private filePath: string
 
-  _load (filePath: string) {
+  _load (filePath: string): VsqDataLikeSQS {
     if (fs.existsSync(filePath)) {
       const vsqData: VsqDataLikeSQS = JSON.parse(fs.readFileSync(filePath).toString())
       if (
@@ -29,28 +29,28 @@ export class VerySimpleQueueLikeSQS {
     return vsqData
   }
 
-  load (filePath: string) {
+  load (filePath: string): VsqDataLikeSQS {
     this.data = this._load(filePath)
     this.filePath = filePath
     return this.data
   }
 
-  size () {
+  size (): number {
     return Object.keys(this.data.value).length
   }
 
-  id () {
+  id (): string {
     return `${parseInt(((new Date()).getTime() / 10000).toString())}-${uuidv4()}`
   }
 
-  send (data: string) {
+  send (data: string): string {
     const id = this.id()
     this.data.value[id] = data
     fs.writeFileSync(this.filePath, JSON.stringify(this.data))
     return id
   }
 
-  receive () {
+  receive (): object {
     if (this.size() === 0) return null
     const key = Object.keys(this.data.value).sort()[0]
     return {
@@ -59,7 +59,7 @@ export class VerySimpleQueueLikeSQS {
     }
   }
 
-  delete (id: string) {
+  delete (id: string): boolean {
     if (!this.data.value.hasOwnProperty(id)) return null
     const ret = delete this.data.value[id]
     fs.writeFileSync(this.filePath, JSON.stringify(this.data))
