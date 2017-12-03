@@ -8,7 +8,7 @@
     "lint": "standard",
     "test": "npm run lint && npm run test-typings && npm run unit",
     "test-typings": "tsc --noEmit",
-    "unit": "jest"
+    "unit": "jest -w 1"
   },
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
     ]
   },
   "dependencies": {
-    "commander": "^2.12.2"
+    "commander": "^2.12.2",
+    "uuid": "^3.1.0"
   }
 }
