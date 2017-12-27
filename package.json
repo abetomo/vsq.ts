@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/abetomo/vsq.ts#readme",
   "devDependencies": {
-    "@types/jest": "^21.1.8",
-    "@types/node": "^8.0.53",
+    "@types/jest": "^21.1.9",
+    "@types/node": "^8.5.2",
     "eslint-plugin-typescript": "^0.8.1",
     "jest": "^21.2.1",
     "standard": "^10.0.3",
     "typescript": "^2.6.2",
-    "typescript-eslint-parser": "^9.0.0"
+    "typescript-eslint-parser": "^9.0.1"
   },
   "jest": {
     "moduleFileExtensions": [
