@@ -1,12 +1,12 @@
 
-import * as fs from 'fs'
+import {existsSync} from 'fs'
 import * as path from 'path'
 import * as program from 'commander'
 
 import {VerySimpleQueue} from './vsq'
 import {VerySimpleQueueLikeSQS} from './vsq_sqs'
 
-const packageJson = fs.existsSync(path.join(process.cwd(), 'package.json'))
+const packageJson = existsSync(path.join(process.cwd(), 'package.json'))
   ? require(path.join(process.cwd(), 'package.json')) : {}
 const vsq = new VerySimpleQueue()
 const vsqLikeSqs = new VerySimpleQueueLikeSQS()

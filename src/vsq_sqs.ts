@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import {existsSync, readFileSync, writeFileSync} from 'fs'
 import * as uuidv4 from 'uuid/v4'
 
 export interface VsqDataLikeSQS {
@@ -11,8 +11,8 @@ export class VerySimpleQueueLikeSQS {
   private filePath: string
 
   _load (filePath: string): VsqDataLikeSQS {
-    if (fs.existsSync(filePath)) {
-      const vsqData: VsqDataLikeSQS = JSON.parse(fs.readFileSync(filePath).toString())
+    if (existsSync(filePath)) {
+      const vsqData: VsqDataLikeSQS = JSON.parse(readFileSync(filePath).toString())
       if (
         vsqData.name !== 'VerySimpleQueueLikeSQS' ||
         Object.prototype.toString.call(vsqData.value) !== '[object Object]'
@@ -25,7 +25,7 @@ export class VerySimpleQueueLikeSQS {
       name: 'VerySimpleQueueLikeSQS',
       value: {}
     }
-    fs.writeFileSync(filePath, JSON.stringify(vsqData))
+    writeFileSync(filePath, JSON.stringify(vsqData))
     return vsqData
   }
 
@@ -46,7 +46,7 @@ export class VerySimpleQueueLikeSQS {
   send (data: string): string {
     const id = this.id()
     this.data.value[id] = data
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return id
   }
 
@@ -62,7 +62,7 @@ export class VerySimpleQueueLikeSQS {
   delete (id: string): boolean {
     if (!this.data.value.hasOwnProperty(id)) return null
     const ret = delete this.data.value[id]
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return ret
   }
 }

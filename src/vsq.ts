@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import {existsSync, readFileSync, writeFileSync} from 'fs'
 
 export interface VsqData {
   name: string,
@@ -10,8 +10,8 @@ export class VerySimpleQueue {
   private filePath: string
 
   _load (filePath: string): VsqData {
-    if (fs.existsSync(filePath)) {
-      const vsqData: VsqData = JSON.parse(fs.readFileSync(filePath).toString())
+    if (existsSync(filePath)) {
+      const vsqData: VsqData = JSON.parse(readFileSync(filePath).toString())
       if (vsqData.name !== 'VerySimpleQueue' || !Array.isArray(vsqData.value)) {
         throw new Error('not a data file of VerySimpleQueue')
       }
@@ -21,7 +21,7 @@ export class VerySimpleQueue {
       name: 'VerySimpleQueue',
       value: []
     }
-    fs.writeFileSync(filePath, JSON.stringify(vsqData))
+    writeFileSync(filePath, JSON.stringify(vsqData))
     return vsqData
   }
 
@@ -38,26 +38,26 @@ export class VerySimpleQueue {
   shift (): string {
     if (this.size() === 0) return null
     const value = this.data.value.shift()
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return value
   }
 
   pop (): string {
     if (this.size() === 0) return null
     const value = this.data.value.pop()
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return value
   }
 
   unshift (data: string): number {
     this.data.value.unshift(data)
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return this.size()
   }
 
   push (data: string): number {
     this.data.value.push(data)
-    fs.writeFileSync(this.filePath, JSON.stringify(this.data))
+    writeFileSync(this.filePath, JSON.stringify(this.data))
     return this.size()
   }
 }
