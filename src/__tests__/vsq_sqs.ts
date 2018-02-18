@@ -1,11 +1,11 @@
-import * as os from 'os'
-import * as fs from 'fs'
+import {tmpdir} from 'os'
+import {existsSync, unlinkSync} from 'fs'
 import * as path from 'path'
 
 import {VerySimpleQueueLikeSQS} from '../vsq_sqs'
 
 const fixturesPath = path.join(__dirname, 'fixtures')
-const testFile = path.join(os.tmpdir(), 'test.json')
+const testFile = path.join(tmpdir(), 'test.json')
 
 describe('very_simple_queue_like_sqs', () => {
   let vsq = null
@@ -14,7 +14,7 @@ describe('very_simple_queue_like_sqs', () => {
   })
 
   afterEach(() => {
-    if (fs.existsSync(testFile)) fs.unlinkSync(testFile)
+    if (existsSync(testFile)) unlinkSync(testFile)
   })
 
   test('vsq is instanceOf VerySimpleQueue', () => {
