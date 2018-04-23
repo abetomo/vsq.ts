@@ -22,12 +22,12 @@
   "homepage": "https://github.com/abetomo/vsq.ts#readme",
   "devDependencies": {
     "@types/jest": "^21.1.10",
-    "@types/node": "^8.9.4",
+    "@types/node": "^8.10.9",
     "eslint-plugin-typescript": "^0.8.1",
-    "jest": "^21.2.1",
-    "standard": "^10.0.3",
-    "typescript": "^2.7.1",
-    "typescript-eslint-parser": "^9.0.1"
+    "jest": "^22.4.3",
+    "standard": "^11.0.1",
+    "typescript": "^2.8.3",
+    "typescript-eslint-parser": "^15.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -49,7 +49,7 @@
     ]
   },
   "dependencies": {
-    "commander": "^2.14.1",
+    "commander": "^2.15.1",
     "uuid": "^3.2.1"
   }
 }
