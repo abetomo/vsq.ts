@@ -51,5 +51,8 @@
   "dependencies": {
     "commander": "^2.15.1",
     "uuid": "^3.2.1"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
   }
 }
