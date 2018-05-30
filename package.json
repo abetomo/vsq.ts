@@ -22,7 +22,7 @@
   "homepage": "https://github.com/abetomo/vsq.ts#readme",
   "devDependencies": {
     "@types/jest": "^21.1.10",
-    "@types/node": "^8.10.9",
+    "@types/node": "^8.10.15",
     "eslint-plugin-typescript": "^0.8.1",
     "jest": "^22.4.3",
     "standard": "^11.0.1",
