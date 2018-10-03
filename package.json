@@ -30,6 +30,7 @@
     "typescript-eslint-parser": "^18.0.0"
   },
   "jest": {
+    "collectCoverage": true,
     "moduleFileExtensions": [
       "ts",
       "tsx",
