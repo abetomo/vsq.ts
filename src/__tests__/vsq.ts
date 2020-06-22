@@ -1,8 +1,8 @@
-import {tmpdir} from 'os'
-import {existsSync, unlinkSync} from 'fs'
+import { tmpdir } from 'os'
+import { existsSync, unlinkSync } from 'fs'
 import * as path from 'path'
 
-import {VerySimpleQueue} from '../vsq'
+import { VerySimpleQueue } from '../vsq'
 
 const fixturesPath = path.join(__dirname, 'fixtures')
 const testFile = path.join(tmpdir(), 'test.json')
@@ -24,32 +24,32 @@ describe('very_simple_queue', () => {
   describe('_load(filePath)', () => {
     test('Files with correct content', () => {
       expect(vsq._load(path.join(fixturesPath, 'data_file.json')))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['1', '2', '3']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['1', '2', '3']
+        })
     })
 
     test('Files that do not exist', () => {
       expect(vsq._load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: []
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: []
+        })
     })
 
     test('File with incorrect content (name)', () => {
       expect(() => {
         vsq._load(path.join(fixturesPath, 'name_invalid_file.json'))
       })
-      .toThrowError(new Error('not a data file of VerySimpleQueue'))
+        .toThrowError(new Error('not a data file of VerySimpleQueue'))
     })
 
     test('File with incorrect content (value)', () => {
       expect(() => {
         vsq._load(path.join(fixturesPath, 'value_invalid_file.json'))
       })
-      .toThrowError(new Error('not a data file of VerySimpleQueue'))
+        .toThrowError(new Error('not a data file of VerySimpleQueue'))
     })
   })
 
@@ -84,17 +84,17 @@ describe('very_simple_queue', () => {
 
       expect(vsq.unshift('hoge')).toBe(1)
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['hoge']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['hoge']
+        })
 
       expect(vsq.unshift('fuga')).toBe(2)
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['fuga', 'hoge']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['fuga', 'hoge']
+        })
     })
   })
 
@@ -104,17 +104,17 @@ describe('very_simple_queue', () => {
 
       expect(vsq.push('hoge')).toBe(1)
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['hoge']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['hoge']
+        })
 
       expect(vsq.push('fuga')).toBe(2)
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['hoge', 'fuga']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['hoge', 'fuga']
+        })
     })
   })
 
@@ -132,10 +132,10 @@ describe('very_simple_queue', () => {
       expect(vsq.size()).toBe(1)
 
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['piyo']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['piyo']
+        })
 
       expect(vsq.shift()).toBe('piyo')
       expect(vsq.size()).toBe(0)
@@ -159,10 +159,10 @@ describe('very_simple_queue', () => {
       expect(vsq.size()).toBe(1)
 
       expect(vsq.load(testFile))
-      .toEqual({
-        name: 'VerySimpleQueue',
-        value: ['hoge']
-      })
+        .toEqual({
+          name: 'VerySimpleQueue',
+          value: ['hoge']
+        })
 
       expect(vsq.pop()).toBe('hoge')
       expect(vsq.size()).toBe(0)

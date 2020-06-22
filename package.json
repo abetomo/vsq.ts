@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "lint": "standard",
+    "lint": "standard **/*.ts",
     "test": "npm run lint && npm run test-typings && npm run unit",
     "test-typings": "tsc --noEmit",
     "unit": "jest -w 1"

@@ -1,4 +1,4 @@
-import {existsSync, readFileSync, writeFileSync} from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
 export interface VsqDataLikeSQS {
@@ -60,7 +60,7 @@ export class VerySimpleQueueLikeSQS {
   }
 
   delete (id: string): boolean {
-    if (!this.data.value.hasOwnProperty(id)) return null
+    if (!Object.prototype.hasOwnProperty.call(this.data.value, id)) return null
     const ret = delete this.data.value[id]
     writeFileSync(this.filePath, JSON.stringify(this.data))
     return ret
