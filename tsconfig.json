@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "lib": ["es2018"],
+    "moduleResolution": "node",
     "outDir": "build",
     "target": "es2018",
     "sourceMap": true
