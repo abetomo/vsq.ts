@@ -7,7 +7,8 @@ import { VerySimpleQueue } from './vsq'
 import { VerySimpleQueueLikeSQS } from './vsq_sqs'
 
 const packageJson = existsSync(path.join(process.cwd(), 'package.json'))
-  ? require(path.join(process.cwd(), 'package.json')) : {}
+  ? require(path.join(process.cwd(), 'package.json'))
+  : {}
 const vsq = new VerySimpleQueue()
 const vsqLikeSqs = new VerySimpleQueueLikeSQS()
 
